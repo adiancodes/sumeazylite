@@ -75,6 +75,7 @@ def download_audio(youtube_url, output_path="audio"):
             'format': 'bestaudio/best',
             'outtmpl': output_path + '.%(ext)s',  # just 'audio'
             'quiet': False,
+            'cookies': 'static/cookies.txt',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',

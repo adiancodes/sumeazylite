@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}History - sumeazy{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4 text-primary">Your Summarized Articles</h2>
+    {% if history %}
+        <div class="list-group">
+            {% for item in history %}
+            <div class="list-group-item list-group-item-action mb-2 shadow-sm">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1 text-success">{{ item.title }}</h5>
+                    <small class="text-muted">{{ item.date }}</small>
+                </div>
+                <p class="mb-1">{{ item.summary }}</p>
+                <small>
+                    <span class="badge bg-info text-dark">Lang: {{ item.language }}</span>
+                    <span class="badge bg-warning text-dark">Polarity: {{ item.polarity }}</span>
+                    <span class="badge bg-{% if item.sentiment == 'Positive' %}success{% elif item.sentiment == 'Negative' %}danger{% else %}secondary{% endif %}">
+                        {{ item.sentiment }}
+                    </span>
+                </small>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">No summarized articles yet.</div>
+    {% endif %}
+</div>
+{% endblock %}

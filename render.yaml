@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: sumeazy
+    env: python
+    buildCommand: |
+      apt-get update && apt-get install -y ffmpeg
+      pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ASSEMBLYAI_API_KEY
+        sync: false  # You'll add it in the Render dashboard
+      - key: SECRET_KEY
+        sync: false

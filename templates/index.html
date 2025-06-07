@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}sumeazy - AI Article Summarizer{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <!--
+            <h1 class="display-5 fw-bold text-primary mb-3">AI Article Summarizer</h1>
+            <p class="lead mb-4 text-secondary">
+                Summarize your web pages with sumeazy. Just input your website URL and get a summary in seconds!
+            </p>-->
+            <!-- Place this in index.html, above your form -->
+            <div class="hero-section py-5 mb-4 text-center text-white">
+                <h1 class="display-4 fw-bold">Welcome to sumeazy</h1>
+                <p class="lead mb-0">Summarize news articles instantly with AI-powered insights and sentiment analysis.
+                </p>
+            </div>
+
+            <div class="p-4 bg-white rounded shadow-sm mb-4">
+                <form method="POST">
+                    <div class="input-group input-group-lg">
+                        <input type="url" name="url" class="form-control" placeholder="Paste article URL here" required>
+                        <button id="summarizeBtn" class="btn btn-primary" type="submit">
+                            <span id="btnText">Generate Summary</span>
+                            <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            {% if summary %}
+            <div class="card shadow-lg mt-4 animated fadeIn">
+                <div class="card-body">
+                    <h3 class="card-title text-success">{{ meta.title }}</h3>
+                    <p><span class="badge bg-info text-dark">Language: {{ meta.language }}</span></p>
+                    <p class="mb-2"><b>Authors:</b> {{ meta.authors }}</p>
+                    <p class="mb-2"><b>Published:</b> {{ meta.date }}</p>
+                    <hr>
+                    <h5 class="text-primary">Summary</h5>
+                    <p class="fs-5">{{ summary }}</p>
+                    <div class="mt-3">
+                        <span class="badge bg-warning text-dark me-2">Polarity Score: {{ sentiment.polarity }}</span>
+                        <span
+                            class="badge bg-{% if sentiment.label == 'Positive' %}success{% elif sentiment.label == 'Negative' %}danger{% else %}secondary{% endif %}">
+                            {{ sentiment.label }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% elif error %}
+            <div class="alert alert-danger mt-4">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+    document.querySelector("form").addEventListener("submit", function () {
+        document.getElementById("btnText").textContent = "Summarizing...";
+        document.getElementById("spinner").classList.remove("d-none");
+    });
+</script>
+
+
+
+{% endblock %}

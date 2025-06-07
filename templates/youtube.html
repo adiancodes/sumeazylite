@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}YouTube Video Summarizer - sumeazy{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4 text-primary">YouTube Video Summarizer</h1>
+    <div class="p-4 bg-white rounded shadow-sm mb-4">
+        <form method="POST">
+            <div class="input-group input-group-lg">
+                <input type="url" name="url" class="form-control" placeholder="Paste YouTube video URL here" required>
+                <button class="btn btn-danger" type="submit">
+                    <i class="bi bi-youtube"></i> Summarize Video
+                </button>
+            </div>
+        </form>
+    </div>
+    {% if summary %}
+    <div class="card shadow-lg mt-4 animated fadeIn">
+        <div class="card-body">
+            <h3 class="card-title text-success">{{ meta.title }}</h3>
+            <p><span class="badge bg-info text-dark">Language: {{ meta.language }}</span></p>
+            <hr>
+            <h5 class="text-primary">Summary</h5>
+            <p class="fs-5">{{ summary }}</p>
+            <div class="mt-3">
+                <span class="badge bg-warning text-dark me-2">Polarity Score: {{ sentiment.polarity }}</span>
+                <span class="badge bg-{% if sentiment.label == 'Positive' %}success{% elif sentiment.label == 'Negative' %}danger{% else %}secondary{% endif %}">
+                    {{ sentiment.label }}
+                </span>
+            </div>
+        </div>
+    </div>
+    {% elif error %}
+    <div class="alert alert-danger mt-4">{{ error }}</div>
+    {% endif %}
+</div>
+{% endblock %}

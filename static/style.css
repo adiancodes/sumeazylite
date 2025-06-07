@@ -1,0 +1,49 @@
+body {
+    background: #f6faff;
+}
+.navbar-brand {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+.text-orange {
+    color: #ff8800 !important;
+}
+.btn-primary, .bg-primary {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+}
+.btn-primary:hover {
+    background-color: #1d4ed8 !important;
+}
+.bg-info {
+    background-color: #e0f2fe !important;
+    color: #0c4a6e !important;
+}
+.bg-warning {
+    background-color: #ffedd5 !important;
+    color: #b45309 !important;
+}
+.bg-success {
+    background-color: #bbf7d0 !important;
+    color: #166534 !important;
+}
+.bg-danger {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+}
+.bg-secondary {
+    background-color: #e5e7eb !important;
+    color: #374151 !important;
+}
+.card {
+    border-radius: 1rem;
+}
+input[type="url"], input[type="email"], input[type="password"] {
+    border-radius: 0.5rem;
+}
+.hero-section {
+    background: linear-gradient(90deg, #2563eb 60%, #ff8800 100%);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+

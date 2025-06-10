@@ -14,25 +14,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
-# Load NLTK data
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
     nltk.download('punkt')
 
-# Load tokenizers
 with open('output/punkt_hindi_tokenizer.pkl', 'rb') as f:
     hindi_tokenizer = pickle.load(f)
 with open('output/punkt_news_tokenizer.pkl', 'rb') as f:
     english_tokenizer = pickle.load(f)
 
-# AssemblyAI API key from .env or environment
 ASSEMBLYAI_API_KEY = os.getenv("ASSEMBLYAI_API_KEY")
-
-print("Using AssemblyAI key:", ASSEMBLYAI_API_KEY)
-
-
 def summarize_article(url):
     article = Article(url)
     try:
@@ -73,7 +65,7 @@ def download_audio(youtube_url, output_path="audio"):
         print("Downloading audio from YouTube...")
         ydl_opts = {
             'format': 'bestaudio/best',
-            'outtmpl': output_path + '.%(ext)s',  # just 'audio'
+            'outtmpl': output_path + '.%(ext)s',
             'quiet': False,
             'cookies': 'static/cookies.txt',
             'postprocessors': [{
@@ -88,9 +80,7 @@ def download_audio(youtube_url, output_path="audio"):
         print(f"Download complete. Checking if file exists: {final_path}")
         if not os.path.exists(final_path):
             raise FileNotFoundError(f"yt-dlp did not produce the file: {final_path}")
-
         return final_path
-
     except Exception as e:
         print("Download failed:", e)
         raise

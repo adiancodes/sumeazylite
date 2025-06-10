@@ -8,6 +8,6 @@ services:
     startCommand: gunicorn app:app
     envVars:
       - key: ASSEMBLYAI_API_KEY
-        sync: false  # You'll add it in the Render dashboard
+        sync: false
       - key: SECRET_KEY
         sync: false

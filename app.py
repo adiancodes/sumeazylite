@@ -21,8 +21,6 @@ mongo = PyMongo(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-
-# --- User Model for Flask-Login (MongoDB) ---
 class User(UserMixin):
     def __init__(self, user_doc):
         self.id = str(user_doc['_id'])
@@ -46,7 +44,8 @@ class User(UserMixin):
 def load_user(user_id):
     return User.get(user_id)
 
-# --- ROUTES ---
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

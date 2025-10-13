@@ -121,7 +121,7 @@ def signup():
             message = "Registered successfully! Please login."
             return redirect(url_for('login'))
     return render_template('signup.html', error=error, message=message)
-
+#routes
 @app.route('/logout')
 @login_required
 def logout():
@@ -182,3 +182,4 @@ def history():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

@@ -4,8 +4,6 @@
 
 <p id="description">Sumeazy is a Flask-based web app that allows users to summarize news articles and YouTube videos with built-in sentiment analysis. It supports both English and Hindi content and uses AssemblyAI for transcribing YouTube videos. Users can sign up log in and save summaries to view their history later. It's perfect for digesting long-form content quickly and effectively.</p>
 
-<p align="center"><img src="https://img.shields.io/github/stars/adiancodes/sumeazylite?style=social" alt="shields"></p>
-
 <h2> Demo</h2>
 
 
